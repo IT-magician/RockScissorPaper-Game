@@ -93,6 +93,7 @@
 }
 .sidenav.opened .closebtn {
   position: fixed;
+  transition: all 1s ease-out;
 }
 
 .playbox {
