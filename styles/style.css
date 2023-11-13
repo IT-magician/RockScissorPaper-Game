@@ -36,47 +36,71 @@
   background-color: #04aa6d;
   color: white;
 }
-.topnav .openbtn {
+.topnav .navOpenerBtn {
   position: absolute;
   top: 0px;
   right: 0px;
   font-size: 36px;
   margin-left: 50px;
   vertical-align: middle;
+  z-index: 1;
 }
-.topnav .openbtn:hover span {
+.topnav .navOpenerBtn:hover span {
   background: #333;
 }
-.topnav .openbtn span {
+.topnav .navOpenerBtn span {
   display: block;
   width: 33px;
   height: 4px;
   margin-bottom: 5px;
   background: #cdcdcd;
   border-radius: 3px;
-  z-index: 1;
   transform-origin: 4px 0px;
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
 }
-.topnav .openbtn span:first-child {
+.topnav .navOpenerBtn span:first-child {
   transform-origin: 0% 0%;
 }
-.topnav .openbtn span:nth-last-child(2) {
+.topnav .navOpenerBtn span:nth-last-child(2) {
   transform-origin: 0% 100%;
+}
+
+.sidenav.opened ~ .topnav .navOpenerBtn span {
+  transition: 0.5s ease-in-out;
+  left: 5px;
+}
+.sidenav.opened ~ .topnav .navOpenerBtn span:nth-last-child(1) {
+  transform: rotate(-405deg) translate(-4.5px, -1px);
+  transition: 0.001s ease-in-out;
+}
+.sidenav.opened ~ .topnav .navOpenerBtn span:nth-last-child(2) {
+  width: 0;
+}
+.sidenav.opened ~ .topnav .navOpenerBtn span:nth-last-child(3) {
+  transform: rotate(45deg);
 }
 
 /* The side navigation menu */
 .sidenav {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
+  height: 100%;
+  /* 100% Full-height */
+  width: 0;
+  /* 0 width - change this with JavaScript */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Stay on top */
+  top: 0;
+  /* Stay at the top */
   left: 0;
-  background-color: #111; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  background-color: rgba(17, 17, 17, 0.95);
+  /* Black*/
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 60px;
+  /* Place content 60px from the top */
+  transition: 0.5s;
+  /* 0.5 second transition effect to slide in the sidenav */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -103,7 +127,7 @@
   margin-top: 100px;
 }
 .playbox.done {
-  background-color: #6a4c93;
+  background-color: rgba(105, 76, 147, 0.8431372549);
 }
 
 .log {
@@ -202,4 +226,4 @@
   75% {
     transform: scale(0.95, 1.05);
   }
-}
+}/*# sourceMappingURL=style.css.map */
