@@ -3,6 +3,19 @@
   padding: 0;
   margin: 0;
   display: flexbox;
+
+  --dark-green-color: #04aa6d;
+  --green-color: #06d6a0;
+  --dark-purple-color: #6a4c93;
+  --purple-color: #694c93d7;
+  --yellow-color: #ffca3a;
+  --dark-blue-color: #1983c486;
+  --blue-color: #1982c4;
+  --red-color: #ff595e;
+}
+
+body {
+  min-width: 400px;
 }
 
 *,
@@ -15,6 +28,11 @@
 .topnav {
   background-color: #333;
   overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
 
   /* Style the links inside the navigation bar */
   a {
@@ -34,50 +52,59 @@
 
   /* Add a color to the active/current link */
   a.title {
-    background-color: #04aa6d;
+    background-color: var(--dark-green-color);
     color: white;
   }
 
-  .navOpenerBtn {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    font-size: 36px;
-    margin-left: 50px;
-    vertical-align: middle;
-    z-index: 1;
+}
 
-    &:hover span {
-      background: #333;
+.navOpenerBtn {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  font-size: 36px;
+  margin-left: 50px;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  z-index: 1;
+
+  &:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  &:hover span {
+    background: #333;
+  }
+
+  & span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+
+    background: #cdcdcd;
+
+    border-radius: 3px;
+
+    transform-origin: 4px 0px;
+
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+
+    &:first-child {
+      transform-origin: 0% 0%;
     }
 
-    & span {
-      display: block;
-      width: 33px;
-      height: 4px;
-      margin-bottom: 5px;
-
-      background: #cdcdcd;
-
-      border-radius: 3px;
-
-      transform-origin: 4px 0px;
-
-      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
-        background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
-
-      &:first-child {
-        transform-origin: 0% 0%;
-      }
-
-      &:nth-last-child(2) {
-        transform-origin: 0% 100%;
-      }
+    &:nth-last-child(2) {
+      transform-origin: 0% 100%;
     }
   }
 }
 
-.sidenav.opened~.topnav .navOpenerBtn {
+.sidenav.opened~.navOpenerBtn {
   span {
     transition: .5s ease-in-out;
 
@@ -120,20 +147,18 @@
   transition: 0.5s;
   /* 0.5 second transition effect to slide in the sidenav */
 
+  &::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera*/
+  }
+
+
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 
   &.opened {
     width: 100%;
-  }
-
-  .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
   }
 
 }
@@ -152,16 +177,20 @@
   &.done {
     // width: 40%;
     // height: 400px;
-    background-color: #694c93d7;
+    background-color: var(--purple-color);
   }
 }
 
 .log {
   margin: 5px;
 
-  .played-time::before {
-    content: "플레이한 시간 : ";
-    font-weight: 800;
+  .played-time {
+    color: #f2f2f2;
+
+    &::before {
+      content: "플레이한 시간 : ";
+      font-weight: 800;
+    }
   }
 }
 
@@ -170,14 +199,15 @@
   height: 200px;
   border: 1px solid #000;
   margin: 15px;
-  background-color: #ffca3a;
+  padding: 10px;
+  background-color: var(--yellow-color);
   animation: gelatine 0.5s infinite;
 
   &::before {
     position: absolute;
     top: 50%;
     left: 50%;
-    content: "물음표";
+    content: "?";
     animation: gelatine 0.5s infinite;
   }
 
@@ -196,15 +226,15 @@
 
 .game-result {
   &-win {
-    background-color: #06d6a0;
+    background-color: var(--green-color);
   }
 
   &-draw {
-    background-color: #1982c4;
+    background-color: var(--blue-color);
   }
 
   &-lose {
-    background-color: #ff595e;
+    background-color: var(--red-color);
   }
 }
 
@@ -213,15 +243,13 @@
 
   &.selected .choice {
     cursor: default;
-
-    transition: none !important;
   }
 
   & .choice {
     cursor: pointer;
 
     &:hover {
-      background-color: #6a4c93;
+      background-color: var(--dark-purple-color);
     }
   }
 }
@@ -233,14 +261,14 @@
     width: 100px;
     height: 55px;
     margin: 5px;
-    background-color: #1983c486;
+    background-color: var(--dark-blue-color);
     border-width: 0;
     border-radius: 5px;
 
     font-weight: 600;
 
     &:hover {
-      background-color: #1982c4;
+      background-color: var(--blue-color);
     }
 
     &[value="Replay"] {
@@ -273,5 +301,29 @@
 
   75% {
     transform: scale(0.95, 1.05);
+  }
+}
+
+@media screen and (max-width:768px) {
+  .choice {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  50%,
+  100% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-5px);
+  }
+
+  75% {
+    transform: translateY(5px);
   }
 }
