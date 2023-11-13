@@ -91,10 +91,6 @@
   font-size: 36px;
   margin-left: 50px;
 }
-.sidenav.opened .closebtn {
-  position: fixed;
-  transition: all 1s ease-out;
-}
 
 .playbox {
   display: flex;
