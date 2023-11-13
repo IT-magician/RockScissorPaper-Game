@@ -104,6 +104,10 @@
     font-size: 36px;
     margin-left: 50px;
   }
+
+  &.opened .closebtn {
+    position: fixed;
+  }
 }
 
 .playbox {
