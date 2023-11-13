@@ -91,6 +91,9 @@
   font-size: 36px;
   margin-left: 50px;
 }
+.sidenav.opened .closebtn {
+  position: fixed;
+}
 
 .playbox {
   display: flex;
